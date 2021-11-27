@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>字幕確認ツール</title>
+        <link rel="stylesheet" href="subtools.css">
+        <script src="timeWithMillisecond.js"></script>
+        <script src="subtitleSbv.js"></script>
+        <script src="subtitleCsv.js"></script>
+        <script src="subtools.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1>字幕確認ツール</h1>
+            <div id="about">
+                <h2>このツールについて</h2>
+                <h3>現在分かっている問題</h3>
+                <ul>
+                    <li>読み込みがBOM付データに対応していない</li>
+                    <li>読み書きともに対応していない形式が多い</li>
+                </ul>
+            </div>
+            <div id="import">
+                <h2> Import</h2>
+                <input type="file" id="inputFile" accept="text/*">
+                <br><br>
+                <label>ファイル形式
+                    <select name="inputFileType">
+                        <option value="csv">CSV (.csv)</option>
+                        <option value="sbv" selected="selected">SubViewer (.sbv / .sub)</option>
+                    </select>
+                </label>
+                <label>
+                    <select name="haveEnd">
+                        <option value="true" selected="selected">終了時間あり</option>
+                        <option value="false">終了時間なし</option>
+                    </select>
+                </label>
+                <input type="button" onclick="fileImport()" value="読み込む">
+            </div>
+
+
+            <div id="edit" class="tab_window">
+                <h2>データ確認エリア</h2>
+                <div id="subtitleList" style="height:300px;overflow-y:scroll; border:3px skyblue solid;">
+
+                </div>
+            </div>
+            <div id="export" class="tab_window">
+                <h2>Export</h2>
+                <label>
+                    ファイル形式:
+                    <select name="outputFileType">
+                        <option value="csv" selected="selected">CSV(.csv)</option>
+                        <option value="sbv">SubViewer(.sbv)</option>
+                        <option value="srt" disabled="disabled">SubRip (.srt)</option>
+                    </select>
+                </label><br>
+                <label>文字コードのBOM：
+                    <select name="outputFileCharCode">
+                        <option value="utf-8_NoBOM">UTF-8 BOMなし</option>
+                        <option value="utf-8_WithBOM" selected="selected">UTF-8 BOMあり</option>
+                    </select>
+                </label> <br>ExcelでUTF-8 CSVを読み込むときは、BOMが必要です。BOMありを選択してください。<br>
+                <label>改行コード：
+                    <select name="returnCode">
+                        <option value="r">CR</option>
+                        <option value="n">LF</option>
+                        <option value="rn" selected="selected">CR+LF</option>
+
+                    </select>
+                </label><br>CSVでは「CR+LF」が一般的です。<br>
+                <input type="button" value="出力ファイル生成" onclick="fileExport()">
+                - &gt;<a id="download" download=""> 出力データ </a>
+                <br>「出力ファイル生成」を押したあと、「出力データ」を押して保存してください。
+            </div>
+        </div>
+    
+</body></html>
