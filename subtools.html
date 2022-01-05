@@ -4,23 +4,34 @@
         <meta charset="utf-8">
         <title>字幕確認ツール</title>
         <link rel="stylesheet" href="subtools.css">
-        <script src="timeWithMillisecond.js"></script>
-        <script src="subtitleSbv.js"></script>
-        <script src="subtitleCsv.js"></script>
-        <script src="subtools.js"></script>
+        <link rel="stylesheet" href="./styles/tabui.css">
+        <script src="./scripts/timeWithMillisecond.js"></script>
+        <script src="./scripts/subtitleSbv.js"></script>
+        <script src="./scripts/subtitleCsv.js"></script>
+        <script src="./scripts/subtools.js"></script>
+        <script src="./scripts/tabui.js"></script>
     </head>
     <body>
         <div class="wrapper">
             <h1>字幕確認ツール</h1>
-            <div id="about">
+            <div>
+                <ul class="tablist">
+                    <li id="tab_about" class="tab" onclick="tabs.switchTab('about');">about</li>
+                    <li id="tab_import" class="tab" onclick="tabs.switchTab('import');">import</li>
+                    <li id="tab_edit" class="tab" onclick="tabs.switchTab('edit');">edit</li>
+                    <li id="tab_export" class="tab" onclick="tabs.switchTab('export');">export</li>
+                </ul>
+            </div>
+            <div id="about" class="tab_window">
                 <h2>このツールについて</h2>
                 <h3>現在分かっている問題</h3>
                 <ul>
                     <li>読み込みがBOM付データに対応していない</li>
                     <li>読み書きともに対応していない形式が多い</li>
                 </ul>
+                <input type="button" onclick="tabs.switchTab('import');" value="始める">
             </div>
-            <div id="import">
+            <div id="import" class="tab_window">
                 <h2> Import</h2>
                 <input type="file" id="inputFile" accept="text/*">
                 <br><br>

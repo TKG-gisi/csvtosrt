@@ -1,0 +1,35 @@
+.tab_window{
+    border:2px solid gray;
+    box-sizing: border-box;
+    padding:1em;
+}
+.tab_window_hide{
+    display: none;
+}
+.tab{
+    padding:0 1em;
+}
+.tab_hide{
+    /*
+    background-color:darkgray;
+    color:gray;
+    border:4px outset;
+    */
+    border:4px solid gray;
+}
+.tab_show{
+    color:black;
+    background-color: white;
+    border:4px solid orangered;
+    /*border:4px inset;*/
+    border-bottom:none;
+}
+.tablist{
+    display:flex;
+    margin-bottom:-2px;
+}
+.tablist li{
+    list-style-type: none;
+}
+
+
